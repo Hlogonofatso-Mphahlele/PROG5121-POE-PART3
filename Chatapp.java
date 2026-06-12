@@ -5,11 +5,6 @@ import java.util.Scanner;
 
 public class Chatapp {
 
-    static String[] messageIDs = new String[50];
-    static String[] messageHashs = new String[50];
-    static String[] recipientCells = new String[50];
-    static String[] messages = new String[50];
-    static String[] messageStatuses = new String[50];
        
     static int index = 0;
     
@@ -108,7 +103,7 @@ public class Chatapp {
                             messages[count] = ms.getMessageText();
                             
                             if (optionChoice == 1) {
-                                messageStatuses[count] = "Message Sent";
+                                messageStatuses[count] = "Sent";
                                 System.out.println(ms.sendMessages(1));
                                 messageIDs[index] = ms.getMessageID();
                                 messageHashs[index] = ms.getMessageHash();
@@ -120,17 +115,17 @@ public class Chatapp {
                                 System.out.println("\n" + ms.printMessageDetails());
                                 
                             } else if (optionChoice == 2){
-                                messageStatuses[count] = "Message Disregarded";
+                                messageStatuses[count] = "Disregarded";
                                 System.out.println(ms.sendMessages(2));
                                 messageIDs[index] = ms.getMessageID();
                                 messageHashs[index] = ms.getMessageHash();
                                 recipientCells[index] = ms.getRecipientCell();
                                 messages[index] = ms.getMessageText();
-                                messageStatuses[index] = "Sent";
+                                messageStatuses[index] = "Disregarded";
                                 index++;
                                
                             }else if(optionChoice == 3) {
-                                messageStatuses[count] = "Message Stored";
+                                messageStatuses[count] = "Stored";
                                 System.out.println(ms.sendMessages(3));
                                 messageIDs[index] = ms.getMessageID();
                                 messageHashs[index] = ms.getMessageHash();
@@ -176,7 +171,7 @@ public class Chatapp {
                                     System.out.println("Recipient Cell: " + recipientCells[i]);
                                     System.out.println("Message: " + messages[i]);
                                     System.out.println("Message Status: " + messageStatuses[i]);
-                                    found = true;
+                                    messageFound = true;
                                 }
                             }
                         }
@@ -191,14 +186,15 @@ public class Chatapp {
                         int longestIndxs = -1;
                         
                         for(int i = 0; i < index; i++) {
-                            if(messages[i].length() > longestMessageChars) {
+                            if(messages[i] != null && messages[i].length() > longestMessageChars) {
                                 longestMessageChars = messages[i].length();
                                 longestIndxs = i;
                             }
                         }
                         
                         if (longestIndxs != -1) {
-                            System.out.println("Longest Message Recipient Cell: "+ recipientCells[longestIndxs]+ "Message Length: "+ longestMessageChars+ " charecters");
+                            System.out.println("Longest Message Recipient Cell: "+ recipientCells[longestIndxs]);
+                            System.out.println("Message Length: "+ longestMessageChars+ " charecters");
                         }
                         break;
                         
@@ -225,7 +221,7 @@ public class Chatapp {
                         break;
                         
                     case 6:
-                        System.out.println("\nTotal messages sent: " + Message.returnTotalMessages());
+                        System.out.println("\nTotal messages sent: " + Message.returnTotalNumberOfMessages());
                         
                         System.out.println("Thank u for using QuickChat");
                         
