@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author hlogo
+ * @author hlogonofatso the great
  */
 public class LoginTest {
     
@@ -54,7 +54,7 @@ public class LoginTest {
     public void testSuccessfulLogin() {
         Login user = new Login("kyl_1", "Ch&&sec@ke99!", "+27838968976" );
         assertTrue(user.loginUser("kyl_1", "Ch&&sec@ke99!"));
-        assertEquals("Welcome Lionsin Escanor, it is great to see you again.", user.returnLoginStatus(true, "Lionsin", "Escanor"));
+        assertEquals("Welcome Lionsin Hlogonofatso Mphahlele, it is great to see you again.", user.returnLoginStatus(true, "Lionsin", "Escanor"));
     }
     @Test public void testUnsuccessfulLogin(){
         Login user = new Login("kyle!!!!!!!!!", "Ch&&sec@ke99!", "+27838968976");
