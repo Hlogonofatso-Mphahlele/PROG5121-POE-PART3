@@ -22,13 +22,13 @@ public class Login {
     public boolean checkPasswordComplexity() {
         boolean hasLength = password.length() >= 8;
         boolean hasCapitalLetter = password.matches(".*[A-Z].*");
-        boolean hasANumber = password.matches(".*[0-9].*");
+        boolean hasNumber = password.matches(".*[0-9].*");
         boolean hasSpecialCharecter = password.matches(".*[~!@#$%^&*()_+{}|:<>?].*");
         
-        return hasLength && hasCapitalLetter && hasANumber && hasSpecialCharecter;
+        return hasLength && hasCapitalLetter && hasNumber && hasSpecialCharecter;
     }
     
-    //Cellphone number must have Mzanzi's international cell code
+    //Cellphone number must have Mzanzis international cell code
     public boolean checkCellPhoneNumber() {
         return cellPhoneNumber.matches("^\\+27\\d{9}$");
     }
@@ -39,7 +39,7 @@ public class Login {
         }
         
         if(!checkPasswordComplexity()) {
-            return "Password is not correctly formatted, ensure that it has at least eight charecters, a capital letter, a number and a speecial charecter.";
+            return "Password is not correctly formatted, please ensure that it has at least eight charecters, a capital letter, a number and a speecial charecter.";
         }
         
         if(!checkCellPhoneNumber()) {
@@ -54,9 +54,9 @@ public class Login {
     
     public String returnLoginStatus(boolean loginSuccess, String firstName, String lastName) {
         if(loginSuccess) {
-            return "Welcome  " + firstName + " " + lastName + " it is great to see you again";
+            return "Welcome  " + firstName + " " + lastName + ", it is great to see you again";
         }
-        return "username or password incorrect, please try again";
+        return "Username or password incorrect, please try again.";
     }
     
 }
